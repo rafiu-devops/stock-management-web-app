@@ -1,0 +1,142 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+/* ── Theme CSS Variables ── */
+:root {
+  /* Backgrounds */
+  --t-bg: #0d1117;
+  --t-bg-card: #161b22;
+  --t-bg-elevated: #21262d;
+  /* Borders */
+  --t-border: rgba(48, 54, 61, 0.9);
+  --t-border-light: rgba(48, 54, 61, 0.5);
+  /* Blue */
+  --t-blue: #3b8fff;
+  --t-blue-light: #58a6ff;
+  --t-blue-dim: rgba(59, 143, 255, 0.15);
+  --t-blue-dim-hover: rgba(59, 143, 255, 0.25);
+  --t-blue-border: rgba(59, 143, 255, 0.22);
+  /* Green */
+  --t-green: #3fb950;
+  --t-green-light: #56d364;
+  --t-green-dim: rgba(63, 185, 80, 0.15);
+  --t-green-border: rgba(63, 185, 80, 0.25);
+  /* Amber */
+  --t-amber: #e3b341;
+  --t-amber-light: #f0c447;
+  --t-amber-dim: rgba(227, 179, 65, 0.15);
+  --t-amber-border: rgba(227, 179, 65, 0.25);
+  /* Red */
+  --t-red: #f85149;
+  --t-red-light: #ff7b72;
+  --t-red-dim: rgba(248, 81, 73, 0.15);
+  --t-red-border: rgba(248, 81, 73, 0.22);
+  /* Text */
+  --t-text-primary: #e6edf3;
+  --t-text-secondary: #8b949e;
+  --t-text-muted: #484f58;
+  /* Misc */
+  color-scheme: dark;
+}
+
+/* ── Light Theme overrides ── */
+[data-theme="light"] {
+  --t-bg: #f0f2f5;
+  --t-bg-card: #ffffff;
+  --t-bg-elevated: #e2e8f0;
+  --t-border: rgba(210, 218, 230, 0.9);
+  --t-border-light: rgba(210, 218, 230, 0.5);
+  --t-blue: #1a6fe0;
+  --t-blue-light: #1a6fe0;
+  --t-blue-dim: rgba(26, 111, 224, 0.1);
+  --t-blue-dim-hover: rgba(26, 111, 224, 0.18);
+  --t-blue-border: rgba(26, 111, 224, 0.22);
+  --t-green: #1a7f37;
+  --t-green-light: #1a7f37;
+  --t-green-dim: rgba(26, 127, 55, 0.1);
+  --t-green-border: rgba(26, 127, 55, 0.22);
+  --t-amber: #9a6700;
+  --t-amber-light: #9a6700;
+  --t-amber-dim: rgba(154, 103, 0, 0.1);
+  --t-amber-border: rgba(154, 103, 0, 0.22);
+  --t-red: #cf222e;
+  --t-red-light: #cf222e;
+  --t-red-dim: rgba(207, 34, 46, 0.1);
+  --t-red-border: rgba(207, 34, 46, 0.22);
+  --t-text-primary: #1c2128;
+  --t-text-secondary: #57606a;
+  --t-text-muted: #8c959f;
+  color-scheme: light;
+}
+
+/* ── Base ── */
+html, body, #root {
+  background: var(--t-bg);
+  color: var(--t-text-primary);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* ── Select dropdowns ── */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238b949e' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px !important;
+  cursor: pointer;
+}
+
+select option {
+  background: var(--t-bg-elevated);
+  color: var(--t-text-primary);
+}
+
+/* ── Date input ── */
+input[type="date"] {
+  color-scheme: inherit;
+}
+
+/* ── Number input — hide spinners ── */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--t-border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--t-text-muted); }
+
+/* ── Smooth scrolling / box model ── */
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Button focus ── */
+button:focus-visible {
+  outline: 2px solid var(--t-blue);
+  outline-offset: 2px;
+}
+
+/* ── Mobile font scale ── */
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+}
+
+/* ── Modal safe-area fix for mobile bottom nav ── */
+.modal-sheet-content {
+  padding-bottom: calc(80px + env(safe-area-inset-bottom));
+}
