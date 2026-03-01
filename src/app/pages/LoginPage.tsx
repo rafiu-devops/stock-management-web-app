@@ -456,10 +456,6 @@ export function LoginPage() {
               {loading ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
-
-          <p style={{ color: T.textMuted, fontSize: '12px', textAlign: 'center', marginTop: 20 }}>
-            Demo: admin / admin123
-          </p>
         </div>
 
         <p style={{ color: T.textMuted, fontSize: '12px', textAlign: 'center', marginTop: 24 }}>
